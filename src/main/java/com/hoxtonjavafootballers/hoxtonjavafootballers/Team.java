@@ -25,7 +25,7 @@ public class Team {
     public String name;
 
 @OneToMany(mappedBy = "team")
-private Set<Team> teams;
+private Set<Team> team;
     public Team () {
     }
 }

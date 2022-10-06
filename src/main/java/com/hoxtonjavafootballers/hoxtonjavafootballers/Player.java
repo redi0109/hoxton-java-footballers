@@ -24,10 +24,9 @@ public class Player {
     public String nationality;
     public Integer scoreOutOfTen;
     public Boolean isReplacement;
-    public Integer teamId;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JoinColumn(name = "teamId", nullable = false, insertable = false)
     private Team team;
 
     public Player() {
