@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class Player {
     public Boolean isReplacement;
 
     @ManyToOne
-    @JoinColumn(name = "teamId", nullable = false, insertable = false)
+    @JoinColumn(name = "teamId", nullable = false)
     private Team team;
 
     public Player() {
@@ -48,6 +49,11 @@ class PlayerController{
     @PostMapping("/players")
     public Player createTeam(@RequestBody Player playerData) {
         return playerRepo.save(playerData);
+    }
+
+    @GetMapping("/players/{playerId}")
+    public Player getPlayer(@PathVariable Integer playerId) {
+        return playerRepo.findById(playerId).get();
     }
 }
 
