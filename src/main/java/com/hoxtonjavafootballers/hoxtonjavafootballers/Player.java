@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +24,11 @@ public class Player {
     public String nationality;
     public Integer scoreOutOfTen;
     public Boolean isReplacement;
+    public Integer teamId;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Team team;
 
     public Player() {
         

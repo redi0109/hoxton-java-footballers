@@ -1,10 +1,12 @@
 package com.hoxtonjavafootballers.hoxtonjavafootballers;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +24,8 @@ public class Team {
     public Integer id;
     public String name;
 
+@OneToMany(mappedBy = "team")
+private Set<Team> teams;
     public Team () {
     }
 }
